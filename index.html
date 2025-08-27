@@ -7,18 +7,21 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap');
 
-body {
+body, html {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
+  height: 100%;
   background: linear-gradient(135deg, #91C8E4, #4682A9);
+}
+
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  text-align: center;
+  height: 100%;
   flex-direction: column;
-  overflow-x: hidden;
+  text-align: center;
 }
 
 .box {
@@ -61,22 +64,36 @@ button:hover {
   transform: scale(1.05);
 }
 
-#message {
+#messageBox {
   display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: right;
+  width: 90%;
+}
+
+#message {
   font-family: 'Amiri', serif;
   font-size: 16px;
   line-height: 1.6;
-  text-align: right;
   white-space: pre-line;
+  background: rgba(255,255,255,0.85);
+  padding: 30px 20px;
+  border-radius: 20px;
+  border: 2px solid #0D5EA6;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  max-width: 400px;
+  width: 100%;
   opacity: 0;
-  transition: all 0.7s ease;
+  transition: opacity 0.7s ease;
 }
 
-/* لینک داخل پیام */
 a {
   color: #0D5EA6;
   text-decoration: none;
   font-weight: bold;
+  margin-top: 10px;
 }
 
 /* انیمیشن محو شدن فرم */
@@ -86,19 +103,14 @@ a {
 }
 
 /* نمایش پیام با fade-in */
-#message.show {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+#messageBox.show #message {
   opacity: 1;
-  height: auto;
 }
 
 /* رسپانسیو موبایل */
 @media (max-width: 500px) {
-  .box {
-    padding: 20px 15px;
+  #message {
+    font-size: 15px;
   }
 
   input {
@@ -109,27 +121,23 @@ a {
   button {
     width: 100%;
   }
-
-  #message {
-    font-size: 15px;
-    width: 90%;
-  }
 }
 </style>
 </head>
 <body>
+<div class="container">
+  <div class="box" id="formBox">
+    <h2>اسم و سن خود را وارد کنید:</h2>
+    <input type="text" id="nameInput" placeholder="اسم شما">
+    <input type="number" id="ageInput" placeholder="سن شما">
+    <br>
+    <button onclick="showMessage()">ثبت</button>
+  </div>
 
-<div class="box" id="formBox">
-  <h2>اسم و سن خود را وارد کنید:</h2>
-  <input type="text" id="nameInput" placeholder="اسم شما">
-  <input type="number" id="ageInput" placeholder="سن شما">
-  <br>
-  <button onclick="showMessage()">ثبت</button>
-</div>
-
-<div class="box" id="message">
-  <p id="textMessage"></p>
-  <p><a href="https://www.instagram.com/icepack.bt" target="_blank">پیج اینستاگرام ما</a></p>
+  <div id="messageBox">
+    <div id="message"></div>
+    <a href="https://www.instagram.com/icepack.bt" target="_blank">پیج اینستاگرام ما</a>
+  </div>
 </div>
 
 <script>
@@ -142,7 +150,7 @@ function showMessage() {
     return;
   }
 
-  const message = `سلام چطوری میدونم اسمت ${name} و حتی میدونم ${age} سالته
+  const messageText = `سلام چطوری میدونم اسمت ${name} و حتی میدونم ${age} سالته
 ولى ${name} جان باور كن این ذره اى
 برام اهميت نداره
 تنهاچيزى كه برام مهمه اينه كه بياى
@@ -157,18 +165,17 @@ function showMessage() {
 كذاشتم خواستى بيا نخواستيم خاك تو
 سرت لياقت ندارى`;
 
-  document.getElementById('textMessage').textContent = message;
+  document.getElementById('message').textContent = messageText;
 
-  const formBox = document.getElementById('formBox');
-  formBox.classList.add('hide');
+  // مخفی کردن فرم
+  document.getElementById('formBox').classList.add('hide');
 
-  // بعد از محو شدن فرم، پیام را وسط صفحه نمایش بده
+  // نمایش پیام بعد از محو شدن فرم
   setTimeout(() => {
-    const messageBox = document.getElementById('message');
-    messageBox.classList.add('show');
-  }, 700); // مدت زمان transition فرم
+    document.getElementById('messageBox').style.display = 'flex';
+    document.getElementById('messageBox').classList.add('show');
+  }, 700);
 }
 </script>
-
 </body>
 </html>
