@@ -16,7 +16,6 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  flex-direction: column;
   text-align: center;
   overflow-x: hidden;
 }
@@ -70,6 +69,10 @@ button:hover {
   white-space: pre-line;
   opacity: 0;
   transition: all 0.7s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 a {
@@ -78,13 +81,11 @@ a {
   font-weight: bold;
 }
 
-/* انیمیشن انتقال فرم به بالا و محو شدن */
 .box.hide {
   opacity: 0;
   transform: translateY(-50px);
 }
 
-/* نمایش متن با fade-in */
 #message.show {
   display: block;
   opacity: 1;
@@ -107,6 +108,7 @@ a {
 
   #message {
     font-size: 15px;
+    width: 90%;
   }
 }
 </style>
@@ -153,15 +155,13 @@ function showMessage() {
 
   document.getElementById('textMessage').textContent = message;
 
-  // انیمیشن مخفی شدن فرم
   const formBox = document.getElementById('formBox');
   formBox.classList.add('hide');
 
-  // بعد از مدت کوتاه، متن را نمایش بده
   setTimeout(() => {
     const messageBox = document.getElementById('message');
     messageBox.classList.add('show');
-  }, 700); // زمان برابر با transition فرم
+  }, 700);
 }
 </script>
 
