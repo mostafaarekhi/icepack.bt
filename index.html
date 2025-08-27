@@ -7,7 +7,7 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap');
 
-body, html {
+html, body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
@@ -15,13 +15,13 @@ body, html {
   background: linear-gradient(135deg, #91C8E4, #4682A9);
 }
 
-.container {
+body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
   flex-direction: column;
   text-align: center;
+  overflow: hidden;
 }
 
 .box {
@@ -64,13 +64,27 @@ button:hover {
   transform: scale(1.05);
 }
 
-#messageBox {
+/* فرم محو شود */
+.box.hide {
+  opacity: 0;
+  transform: translateY(-50px);
+}
+
+/* کانتینر full screen برای پیام */
+#messageContainer {
   display: none;
-  flex-direction: column;
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #91C8E4, #4682A9);
+  display: flex;
   justify-content: center;
   align-items: center;
-  text-align: right;
-  width: 90%;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
 }
 
 #message {
@@ -89,22 +103,16 @@ button:hover {
   transition: opacity 0.7s ease;
 }
 
+#messageContainer.show #message {
+  opacity: 1;
+}
+
 a {
   color: #0D5EA6;
   text-decoration: none;
   font-weight: bold;
   margin-top: 10px;
-}
-
-/* انیمیشن محو شدن فرم */
-.box.hide {
-  opacity: 0;
-  transform: translateY(-50px);
-}
-
-/* نمایش پیام با fade-in */
-#messageBox.show #message {
-  opacity: 1;
+  display: block;
 }
 
 /* رسپانسیو موبایل */
@@ -125,19 +133,18 @@ a {
 </style>
 </head>
 <body>
-<div class="container">
-  <div class="box" id="formBox">
-    <h2>اسم و سن خود را وارد کنید:</h2>
-    <input type="text" id="nameInput" placeholder="اسم شما">
-    <input type="number" id="ageInput" placeholder="سن شما">
-    <br>
-    <button onclick="showMessage()">ثبت</button>
-  </div>
 
-  <div id="messageBox">
-    <div id="message"></div>
-    <a href="https://www.instagram.com/icepack.bt" target="_blank">پیج اینستاگرام ما</a>
-  </div>
+<div class="box" id="formBox">
+  <h2>اسم و سن خود را وارد کنید:</h2>
+  <input type="text" id="nameInput" placeholder="اسم شما">
+  <input type="number" id="ageInput" placeholder="سن شما">
+  <br>
+  <button onclick="showMessage()">ثبت</button>
+</div>
+
+<div id="messageContainer">
+  <div id="message"></div>
+  <a href="https://www.instagram.com/icepack.bt" target="_blank">پیج اینستاگرام ما</a>
 </div>
 
 <script>
@@ -170,10 +177,11 @@ function showMessage() {
   // مخفی کردن فرم
   document.getElementById('formBox').classList.add('hide');
 
-  // نمایش پیام بعد از محو شدن فرم
+  // نمایش کانتینر پیام بعد از محو شدن فرم
   setTimeout(() => {
-    document.getElementById('messageBox').style.display = 'flex';
-    document.getElementById('messageBox').classList.add('show');
+    const container = document.getElementById('messageContainer');
+    container.style.display = 'flex';
+    container.classList.add('show');
   }, 700);
 }
 </script>
