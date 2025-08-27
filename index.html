@@ -3,44 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>فرم خوش‌آمدگویی</title>
+<title>آیس پک بندرترکمن</title>
 <style>
-  body { font-family: Tahoma, sans-serif; text-align: center; margin-top: 50px; }
-  #messages { display: none; margin-top: 20px; }
+  body { font-family: Tahoma, sans-serif; text-align: center; margin-top: 50px; padding: 0 20px; line-height: 1.6; }
+  #message { display: none; margin-top: 20px; white-space: pre-line; }
   input, button { padding: 10px; font-size: 16px; margin: 5px; }
+  a { color: #3498db; text-decoration: none; }
 </style>
 </head>
 <body>
 
-<h2>لطفاً اسم خود را وارد کنید:</h2>
+<h2>اسم و سن خود را وارد کنید:</h2>
 <input type="text" id="nameInput" placeholder="اسم شما">
-<button onclick="showMessages()">اوکی</button>
+<input type="number" id="ageInput" placeholder="سن شما">
+<br>
+<button onclick="showMessage()">ثبت</button>
 
-<div id="messages">
-  <p id="msg1"></p>
-  <p id="msg2"></p>
-  <p id="msg3"></p>
+<div id="message">
+  <p id="textMessage"></p>
+  <p><a href="https://www.instagram.com/USERNAME" target="_blank">پیج اینستاگرام ما</a></p>
 </div>
 
 <script>
-function showMessages() {
+function showMessage() {
   const name = document.getElementById('nameInput').value.trim();
-  if(name === "") {
-    alert("لطفاً اسم خود را وارد کنید!");
+  const age = document.getElementById('ageInput').value.trim();
+  
+  if(name === "" || age === "") {
+    alert("لطفاً اسم و سن خود را وارد کنید!");
     return;
   }
 
-  const messages = [
-    `سلام ${name}! این متن اول برای توست.`,
-    `${name} عزیز، این متن دوم است.`,
-    `و در نهایت، ${name} این هم متن سوم!`
-  ];
+  const message = `سلام چطوری میدونم اسمت ${name} و حتی میدونم ${age} سالته
+ولى ${name} جان باور كن این ذره اى
+برام اهميت نداره
+تنهاچيزى كه برام مهمه اينه كه بياى
+كافه ما يه چيزى سفارش بدى ما
+فروشمون بيشتر شه آخر ماه چک داريم
 
-  document.getElementById('msg1').textContent = messages[0];
-  document.getElementById('msg2').textContent = messages[1];
-  document.getElementById('msg3').textContent = messages[2];
+ابلفضلى نامردى
+دلخور نشيا ولى ايشالله برى زير تريلى
 
-  document.getElementById('messages').style.display = 'block';
+قربونت برم بازم خودت ميدونى من هيج
+اجبارى ندارم لينك پيجمونو برات
+كذاشتم خواستى بيا نخواستيم خاك تو
+سرت لياقت ندارى`;
+
+  document.getElementById('textMessage').textContent = message;
+  document.getElementById('message').style.display = 'block';
 }
 </script>
 
