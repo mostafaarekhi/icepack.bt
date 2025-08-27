@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فرم خوش‌آمدگویی</title>
+<style>
+  body { font-family: Tahoma, sans-serif; text-align: center; margin-top: 50px; }
+  #messages { display: none; margin-top: 20px; }
+  input, button { padding: 10px; font-size: 16px; margin: 5px; }
+</style>
+</head>
+<body>
+
+<h2>لطفاً اسم خود را وارد کنید:</h2>
+<input type="text" id="nameInput" placeholder="اسم شما">
+<button onclick="showMessages()">اوکی</button>
+
+<div id="messages">
+  <p id="msg1"></p>
+  <p id="msg2"></p>
+  <p id="msg3"></p>
+</div>
+
+<script>
+function showMessages() {
+  const name = document.getElementById('nameInput').value.trim();
+  if(name === "") {
+    alert("لطفاً اسم خود را وارد کنید!");
+    return;
+  }
+
+  const messages = [
+    `سلام ${name}! این متن اول برای توست.`,
+    `${name} عزیز، این متن دوم است.`,
+    `و در نهایت، ${name} این هم متن سوم!`
+  ];
+
+  document.getElementById('msg1').textContent = messages[0];
+  document.getElementById('msg2').textContent = messages[1];
+  document.getElementById('msg3').textContent = messages[2];
+
+  document.getElementById('messages').style.display = 'block';
+}
+</script>
+
+</body>
+</html>
