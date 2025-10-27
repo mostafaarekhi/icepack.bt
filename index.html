@@ -1,94 +1,132 @@
-<!DOCTYPE html>
-<html lang="fa">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>آیس پک بندرترکمن</title>
-<style>
 @import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
-  background: linear-gradient(135deg, #91C8E4, #4682A9);
+  font-family: 'Vazirmatn', 'El Messiri', sans-serif;
+  background: linear-gradient(135deg, #A1C4FD, #C2E9FB);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   flex-direction: column;
   text-align: center;
+  overflow: hidden;
 }
 
 .box {
-  background: rgba(255, 255, 255, 0.85);
-  padding: 30px 20px;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-  max-width: 400px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 35px 25px;
+  border-radius: 25px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+  max-width: 420px;
   width: 90%;
   margin-bottom: 20px;
-  border: 2px solid #0D5EA6;
+  border: 2px solid #4682A9;
+  animation: slideUp 0.8s ease-out;
+}
+
+h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #0D5EA6;
+  position: relative;
+}
+
+h2::before {
+  content: "🍦";
+  position: absolute;
+  left: -30px;
+  top: 0;
+  font-size: 24px;
 }
 
 input {
   width: 100%;
-  max-width: 180px;
-  padding: 10px;
-  margin: 5px 2px;
-  border-radius: 10px;
+  max-width: 200px;
+  padding: 12px;
+  margin: 8px 4px;
+  border-radius: 12px;
   border: 1px solid #ccc;
   font-size: 16px;
   box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #0D5EA6;
+  outline: none;
 }
 
 button {
-  padding: 10px 20px;
-  margin-top: 10px;
+  padding: 12px 25px;
+  margin-top: 15px;
   border: none;
-  border-radius: 15px;
-  background-color: #0D5EA6;
+  border-radius: 20px;
+  background: linear-gradient(to right, #0D5EA6, #3A8FB7);
   color: white;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-size: 16px;
 }
 
 button:hover {
-  background-color: #ff4c3b;
+  background: linear-gradient(to right, #ff4c3b, #ff7b5e);
   transform: scale(1.05);
 }
 
 #message {
   display: none;
-  font-family: 'Amiri', serif;
+  font-family: 'Vazirmatn', serif;
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.8;
   text-align: right;
   white-space: pre-line;
   opacity: 0;
   animation: fadeIn 1s forwards;
+  color: #333;
 }
 
 a {
   color: #0D5EA6;
   text-decoration: none;
   font-weight: bold;
+  display: inline-block;
+  margin-top: 10px;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #ff4c3b;
 }
 
 @keyframes fadeIn {
   to { opacity: 1; }
 }
 
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 /* رسپانسیو برای موبایل */
 @media (max-width: 500px) {
   .box {
-    padding: 20px 15px;
+    padding: 25px 18px;
   }
 
   input {
     max-width: 100%;
-    margin: 5px 0;
+    margin: 6px 0;
   }
 
   button {
@@ -99,52 +137,3 @@ a {
     font-size: 15px;
   }
 }
-</style>
-</head>
-<body>
-
-<div class="box">
-  <h2>اسم و سن خود را وارد کنید:</h2>
-  <input type="text" id="nameInput" placeholder="اسم شما">
-  <input type="number" id="ageInput" placeholder="سن شما">
-  <br>
-  <button onclick="showMessage()">ثبت</button>
-</div>
-
-<div class="box" id="message">
-  <p id="textMessage"></p>
-  <p><a href="https://www.instagram.com/icepack.bt" target="_blank">پیج اینستاگرام ما</a></p>
-</div>
-
-<script>
-function showMessage() {
-  const name = document.getElementById('nameInput').value.trim();
-  const age = document.getElementById('ageInput').value.trim();
-  
-  if(name === "" || age === "") {
-    alert("لطفاً اسم و سن خود را وارد کنید!");
-    return;
-  }
-
-  const message = `سلام چطوری میدونم اسمت ${name} و حتی میدونم ${age} سالته
-ولى ${name} جان باور كن این ذره اى
-برام اهميت نداره
-تنهاچيزى كه برام مهمه اينه كه بياى
-كافه ما يه چيزى سفارش بدى ما
-فروشمون بيشتر شه آخر ماه چک داريم
-
-خدایی نامردى
-دلخور نشيا ولى ايشالله برى زير تريلى
-
-قربونت برم بازم خودت ميدونى من هيج
-اجبارى ندارم لينك پيجمونو برات
-گذاشتم خواستى بيا نخواستيم خاك تو
-سرت لياقت ندارى`;
-
-  document.getElementById('textMessage').textContent = message;
-  document.getElementById('message').style.display = 'block';
-}
-</script>
-
-</body>
-</html>
