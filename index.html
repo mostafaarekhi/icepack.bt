@@ -1,150 +1,146 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>آیس پک بندرترکمن</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap');
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
-  background: linear-gradient(135deg, #91C8E4, #4682A9);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  flex-direction: column;
-  text-align: center;
-}
-
-.box {
-  background: rgba(255, 255, 255, 0.85);
-  padding: 30px 20px;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-  max-width: 400px;
-  width: 90%;
-  margin-bottom: 20px;
-  border: 2px solid #0D5EA6;
-}
-
-input {
-  width: 100%;
-  max-width: 180px;
-  padding: 10px;
-  margin: 5px 2px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  box-sizing: border-box;
-}
-
-button {
-  padding: 10px 20px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 15px;
-  background-color: #0D5EA6;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-button:hover {
-  background-color: #ff4c3b;
-  transform: scale(1.05);
-}
-
-#message {
-  display: none;
-  font-family: 'Amiri', serif;
-  font-size: 16px;
-  line-height: 1.6;
-  text-align: right;
-  white-space: pre-line;
-  opacity: 0;
-  animation: fadeIn 1s forwards;
-}
-
-a {
-  color: #0D5EA6;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-
-/* رسپانسیو برای موبایل */
-@media (max-width: 500px) {
-  .box {
-    padding: 20px 15px;
-  }
-
-  input {
-    max-width: 100%;
-    margin: 5px 0;
-  }
-
-  button {
-    width: 100%;
-  }
-
-  #message {
-    font-size: 15px;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سایت شخصی</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="box">
-  <h2>اسم و سن خود را وارد کنید:</h2>
-  <input type="text" id="nameInput" placeholder="اسم شما">
-  <input type="number" id="ageInput" placeholder="سن شما">
-  <br>
-  <button onclick="showMessage()">ثبت</button>
-</div>
+<!-- Header -->
+<header class="header">
+  <div class="logo">LOGO</div>
+  <nav class="nav">
+    <a href="#">صفحه اصلی</a>
+    <a href="#contact">تماس با من</a>
+  </nav>
+</header>
 
-<div class="box" id="message">
-  <p id="textMessage"></p>
-  <p><a href="https://www.instagram.com/icepack.bt" target="_blank">پیج اینستاگرام ما</a></p>
-</div>
+<!-- Hero -->
+<section class="hero">
+  <h1>سلام من فلانی هستم</h1>
+  <p class="tagline">اینجا یک شعار کوتاه قرار می‌گیرد</p>
+</section>
 
-<script>
-function showMessage() {
-  const name = document.getElementById('nameInput').value.trim();
-  const age = document.getElementById('ageInput').value.trim();
-  
-  if(name === "" || age === "") {
-    alert("لطفاً اسم و سن خود را وارد کنید!");
-    return;
-  }
+<!-- Brands -->
+<section class="brands">
+  <h2>همکاری با برندها</h2>
+  <div class="brand-logos">
+    <img src="brand1.png" alt="">
+    <img src="brand2.png" alt="">
+    <img src="brand3.png" alt="">
+    <img src="brand4.png" alt="">
+  </div>
+</section>
 
-  const message = `سلام چطوری میدونم اسمت ${name} و حتی میدونم ${age} سالته
-ولى ${name} جان باور كن این ذره اى
-برام اهميت نداره
-تنهاچيزى كه برام مهمه اينه كه بياى
-كافه ما يه چيزى سفارش بدى ما
-فروشمون بيشتر شه آخر ماه چک داريم
+<!-- About -->
+<section class="about">
+  <div class="about-text">
+    <h2>درباره من</h2>
+    <p>اینجا متن درباره من قرار می‌گیرد...</p>
+  </div>
+  <div class="about-img">
+    <img src="me.jpg" alt="">
+  </div>
+</section>
 
-خدایی نامردى
-دلخور نشيا ولى ايشالله برى زير تريلى
+<!-- Services -->
+<section class="services">
+  <h2>تخصص‌ها و خدمات</h2>
+  <div class="service-list">
+    <div class="service-item">
+      <div class="icon">🎬</div>
+      <h3>عنوان خدمت</h3>
+      <p>توضیح کوتاه</p>
+    </div>
 
-قربونت برم بازم خودت ميدونى من هيج
-اجبارى ندارم لينك پيجمونو برات
-گذاشتم خواستى بيا نخواستيم خاك تو
-سرت لياقت ندارى`;
+    <div class="service-item">
+      <div class="icon">🖥️</div>
+      <h3>عنوان خدمت</h3>
+      <p>توضیح کوتاه</p>
+    </div>
 
-  document.getElementById('textMessage').textContent = message;
-  document.getElementById('message').style.display = 'block';
-}
-</script>
+    <div class="service-item">
+      <div class="icon">🎧</div>
+      <h3>عنوان خدمت</h3>
+      <p>توضیح کوتاه</p>
+    </div>
+  </div>
+</section>
+
+<!-- Vertical Videos -->
+<section class="videos">
+  <h2>نمونه‌کار ویدیویی</h2>
+  <video src="sample1.mp4" controls></video>
+  <video src="sample2.mp4" controls></video>
+</section>
+
+<!-- Projects -->
+<section class="projects">
+  <h2>پروژه‌های انجام شده</h2>
+  <p>متنی درباره پروژه‌ها قرار می‌گیرد...</p>
+</section>
+
+<!-- Certificates -->
+<section class="certificates">
+  <h2>مدارک و دیپلم‌ها</h2>
+  <div class="cert-list">
+    <img src="cert1.jpg" alt="">
+    <img src="cert2.jpg" alt="">
+    <img src="cert3.jpg" alt="">
+  </div>
+</section>
+
+<!-- About 2 -->
+<section class="about second">
+  <div class="about-text">
+    <h2>درباره من (بخش دوم)</h2>
+    <p>اینجا متن بیشتر قرار می‌گیرد...</p>
+  </div>
+  <div class="about-img">
+    <img src="me2.jpg" alt="">
+  </div>
+</section>
+
+<!-- Image Samples -->
+<section class="images">
+  <h2>نمونه‌کار تصویری</h2>
+  <div class="img-row">
+    <img src="img1.jpg">
+    <img src="img2.jpg">
+    <img src="img3.jpg">
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials">
+  <h2>نظرات</h2>
+  <div class="testi-item">
+    <p>همکاری عالی و حرفه‌ای...</p>
+    <span>نام فرد</span>
+  </div>
+  <div class="testi-item">
+    <p>کیفیت عالی...</p>
+    <span>نام فرد</span>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="contact">
+  <h2>راه‌های ارتباطی</h2>
+  <div class="socials">
+    <a href="#">اینستاگرام</a>
+    <a href="#">تلگرام</a>
+    <a href="#">ایمیل</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>تمام حقوق محفوظ است</p>
+</footer>
 
 </body>
 </html>
